@@ -1,0 +1,26 @@
+{
+  "name": "cycle-timer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Mark Rawls <markrawls96@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "prepublishOnly": "yarn run build",
+    "start": "yarn build && node lib/index.js",
+    "dev": "babel-node src/index.js",
+    "lint": "pretty-quick --check src/"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.5"
+  },
+  "dependencies": {
+    "hotkeys-js": "^3.7.6",
+    "iohook": "^0.6.5",
+    "neo-blessed": "^0.2.0"
+  }
+}
