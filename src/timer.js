@@ -9,6 +9,8 @@ class Timer {
   wrongWarpWindowLength = 15000;
   zeroDayWindowLength = 15000;
 
+  cycleRepeatOffset = 80400;
+
   get inWrongWarpWindow() {
     return this.inWindow(this.wrongWarpWindowOffset, this.wrongWarpWindowLength);
   }
@@ -17,19 +19,20 @@ class Timer {
     return this.inWindow(this.zeroDayWindowOffset, this.zeroDayWindowLength);
   }
 
-  inWindow = (offset, length) => {
+  inWindow = (startOffset, length) => {
     if (!this.running) {
       return false;
     }
 
     const currentTime = Date.now();
-    const delta = (currentTime - this.startTime) % offset;
 
-    if (currentTime - this.startTime < offset) {
-      return false;
+    for (let i = this.startTime + startOffset; i <= currentTime; i += this.cycleRepeatOffset) {
+      if (currentTime <= i + length) {
+        return true;
+      }
     }
 
-    return delta > 0 && delta < length;
+    return false;
   };
 
   start = () => {

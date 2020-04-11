@@ -1,5 +1,4 @@
 import blessed from 'neo-blessed';
-
 import Timer from './timer';
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -49,6 +48,7 @@ const main = async () => {
 
   while (true) {
     if (!timer.running) {
+      text.hidden = false;
       text.setContent('Press t to start the timer');
     }
 
@@ -67,7 +67,6 @@ const main = async () => {
     }
 
     screen.render();
-
     await sleep(25);
   }
 };

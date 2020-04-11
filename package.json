@@ -19,8 +19,6 @@
     "@babel/preset-env": "^7.9.5"
   },
   "dependencies": {
-    "hotkeys-js": "^3.7.6",
-    "iohook": "^0.6.5",
     "neo-blessed": "^0.2.0"
   }
 }
